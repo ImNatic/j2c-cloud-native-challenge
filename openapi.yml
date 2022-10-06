@@ -77,7 +77,7 @@ paths:
       parameters:
         - $ref: '#/parameters/id'
       requestBody:
-        description: Update an existing customer in the store
+        description: Update an existing customer in the store (cloud_native_challenge/{nj_name})
         content:
           application/json:
             schema:
