@@ -1,0 +1,358 @@
+openapi: 3.0.3
+info:
+  title: Cloud Native - Challenge
+  description: |-
+    In this pratical exercise is expected that in the end you will deliver a REST API that enables to register simple operations related to a Nautical Activities Club.
+    
+    The nautical club has activities like Canoeing, Kayak, Surfing... and needs to be able to manage customer profiles.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: mayllon.n.baumer@accenture.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+tags:
+  - name: Customer
+    description: Customer related endpoint cluster
+  - name: Activity
+    description: Activitie related endpoint cluster
+  - name: Scheduling
+    description: Scheduling related endpoint cluster
+paths:
+  /customer:
+    get:
+      tags:
+        - Customer
+      summary: Retrieve customer data by id
+      description: Retrieve customer data by id
+      operationId: getCustomer
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'          
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Customer not found
+        '405':
+          description: Validation exception
+    post:
+      tags:
+        - Customer
+      summary: Add an new customer
+      description: Add an new customer
+      operationId: newCustomer
+      requestBody:
+        description: Add an new customer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'          
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Customer not found
+        '405':
+          description: Validation exception
+    put:
+      tags:
+        - Customer
+      summary: Update an existing customer
+      description: Update an existing customer by Id
+      operationId: updateCustomer
+      parameters:
+        - $ref: '#/parameters/id'
+      requestBody:
+        description: Update an existing customer in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Customer not found
+        '405':
+          description: Validation exception
+    patch:
+      tags:
+        - Customer
+      summary: Update an existing customer
+      description: Update an existing customer by Id. Just the fields in the payload should be updated.
+      operationId: patchCustomer
+      parameters:
+        - $ref: '#/parameters/id'
+      requestBody:
+        description: Update an existing customer.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+            example:
+              first_name: Mayllon
+              last_name: Baumer
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Customer not found
+        '405':
+          description: Validation exception
+    delete:
+      tags:
+        - Customer
+      summary: Remove an existing customer. 
+      description: Remove an existing customer by Id. Only logical deletion will be allowed to maintain data integrity.
+      operationId: deleteCustomer
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+        '201':
+          description: Successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Customer not found
+        '405':
+          description: Validation exception
+  /activity:
+    get:
+      tags:
+        - Activity
+      summary: Retrieve activity data by id
+      description: Retrieve activity data by id
+      operationId: getActivity
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'          
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Activity not found
+        '405':
+          description: Validation exception
+  /activities:
+    get:
+      tags:
+        - Activity
+      summary: Retrieve all the activities
+      description: Retrieve all the activities
+      operationId: getActivities
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activities'          
+        '405':
+          description: Validation exception
+  /schedules:
+    get:
+      tags:
+        - Scheduling
+      summary: Retrieve schedules data by customer id
+      description: Retrieve schedules data by customer id
+      operationId: getSchedules
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedules'          
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Activity not found
+        '405':
+          description: Validation exception
+  /scheduling:
+    get:
+      tags:
+        - Scheduling
+      summary: Retrieve Scheduling data by id
+      description: Retrieve Scheduling data by id
+      operationId: getScheduling
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scheduling'          
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Activity not found
+        '405':
+          description: Validation exception
+    delete:
+      tags:
+        - Scheduling
+      summary: Remove scheduling data by id
+      description: Remove scheduling data by id. Only logical deletion will be allowed to maintain data integrity.
+      operationId: removeScheduling
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+        '201':
+          description: Success
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Scheduling not found
+        '405':
+          description: Validation exception
+components:
+  schemas:
+    Activities:
+      type: array
+      items: 
+        type: object
+        properties:
+          id:
+            type: string
+            example: "99f17cdf-2b53-45cb-a5a7-d494ec45c60f"
+          name:
+            type: string
+            example: Kayak
+          duration:
+            type: string
+            example: "01:00"
+            format: time
+          price:
+            type: number
+            example: 24.99
+    Activity:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "99f17cdf-2b53-45cb-a5a7-d494ec45c60f"
+        name:
+          type: string
+          example: Kayak
+        duration:
+          type: string
+          example: "01:00"
+          format: time
+        price:
+          type: number
+          example: 24.99
+    Scheduling:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "99f17cdf-2b53-45cb-a5a7-d494ec45c60f"
+        description:
+          type: string
+          example: Kayak
+        date:
+          type: string
+          example: "2022-10-28T08:30:00"
+    Schedules:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            example: "99f17cdf-2b53-45cb-a5a7-d494ec45c60f"
+          description:
+            type: string
+            example: Kayak
+          date:
+            type: string
+            example: "2022-10-28T08:30:00"
+    Customer:
+      required:
+        - id
+        - first_name
+        - last_name
+        - phone_number
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: Mayllon
+        last_name:
+          type: string
+          example: Baumer
+        birthdate:
+          type: string
+          format: date
+          example: 1991-11-03
+        fiscal_number:
+          type: number
+          example: 918436895
+        mobile_number:
+          type: string
+          example: "+351594824557"
+    CustomerResponse:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          example: 99f17cdf-2b53-45cb-a5a7-d494ec45c60f
+        first_name:
+          type: string
+          example: Mayllon
+        last_name:
+          type: string
+          example: Baumer
+        birthdate:
+          type: string
+          format: date
+          example: 1991-11-03
+        fiscal_number:
+          type: number
+          example: 918436895
+        mobile_number:
+          type: string
+          example: "+351594824557"
+    GenericResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 99f17cdf-2b53-45cb-a5a7-d494ec45c60f
+parameters:
+  id:
+    in: header
+    name: uuid
+    required: true
+    type: string
+    example: 99f17cdf-2b53-45cb-a5a7-d494ec45c60f
