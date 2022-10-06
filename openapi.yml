@@ -77,7 +77,7 @@ paths:
       parameters:
         - $ref: '#/parameters/id'
       requestBody:
-        description: Update an existing customer in the store (cloud_native_challenge/{nj_name})
+        description: Update an existing customer in the store
         content:
           application/json:
             schema:
@@ -141,7 +141,7 @@ paths:
       tags:
         - Customer
       summary: Upload customer photo. 
-      description: Upload customer photo to google cloud storage.
+      description: Upload customer photo to google cloud storage (cloud_native_challenge/{nj_name}).
       operationId: uploadCustomer
       parameters:
         - $ref: '#/parameters/id'

@@ -5,14 +5,14 @@
 
 ### ☕ Functional requirements
 
-Your client operates in the field of sports activities. It asked you to build a rest api based on the [openapi.xml](openapi.xml) document.
+> Your client operates in the field of sports activities. It asked you to build a rest api based on the [openapi.xml](openapi.xml) document.
 
-You can use https://editor.swagger.io/ for a better view of the document.
+> You can use https://editor.swagger.io/ for a better view of the document.
 Read more about it [here](https://swagger.io/docs/specification/about/)
 
-### 💻 Technical requirements
+### 🤓 Technical requirements
 
-The client has required you to use the following technologies:
+> The client has required you to use the following technologies:
 
 - Java 8+
 - Maven
@@ -24,6 +24,7 @@ The client has required you to use the following technologies:
 - Google Kubernetes Engine (GKE)
 - Container Registry
 - Google Cloud Storage
+- Cloud Logging
 
 ### 🐞 Backlog
 
@@ -37,5 +38,6 @@ The client has required you to use the following technologies:
  - PgAdmin(to query used database tables)
 3. Create a Container Image using [JIB](https://cloud.google.com/java/getting-started/jib)
 4. Deploy your Container Image to [GKE](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app)
-5. Test your Rest Api
-6. Ensure your code has at least 60% [test coverage](https://www.jetbrains.com/help/idea/running-test-with-coverage.html#fe1f1331) using Junit
+5. Use lombok and log4j to write your API logs.
+6. Look for your application logs in Cloud Logging.
+8. Ensure your code has at least 60% [test coverage](https://www.jetbrains.com/help/idea/running-test-with-coverage.html#fe1f1331) using Junit
