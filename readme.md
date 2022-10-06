@@ -1,17 +1,13 @@
 # 💻 Cloud Native Challenge
 
 
-> Welcome to the cloud native challenge. You will use this readme file to guide you through your tasks.
-
-<br />
+> Welcome to the cloud native challenge. You will use this readme file to guide you through your tasks.  
 ### ☕ Functional requirements
 
 > Your client operates in the field of sports activities. It asked you to build a rest api based on the [openapi.xml](openapi.xml) document.
 
 > You can use https://editor.swagger.io/ for a better view of the document.
-Read more about it [here](https://swagger.io/docs/specification/about/)
-
-<br />
+Read more about it [here](https://swagger.io/docs/specification/about/)  
 ### 🤓 Technical requirements
 
 > The client has required you to use the following technologies:
@@ -26,9 +22,7 @@ Read more about it [here](https://swagger.io/docs/specification/about/)
 - Google Kubernetes Engine (GKE)
 - Container Registry
 - Google Cloud Storage
-- Cloud Logging
-
-<br />
+- Cloud Logging  
 ### 🐞 Backlog
 
 1. Go to https://start.spring.io/ and create a new spring boot project and then add it to this project as a first commit. You can add a default dependencies:
