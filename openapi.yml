@@ -136,6 +136,24 @@ paths:
           description: Customer not found
         '405':
           description: Validation exception
+  /customer/upload:
+    post:
+      tags:
+        - Customer
+      summary: Upload customer photo. 
+      description: Upload customer photo to google cloud storage.
+      operationId: uploadCustomer
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+        '201':
+          description: Successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Customer not found
+        '405':
+          description: Validation exception
   /activity:
     get:
       tags:
