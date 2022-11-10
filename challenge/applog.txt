@@ -1,0 +1,4 @@
+INFO    2022-11-10 14:53:41,797 [http-nio-8080-exec-3] com.miguelfnunes.challenge.controller.CustomerController  - Deleting customer
+INFO    2022-11-10 15:35:32,789 [http-nio-8080-exec-1] com.miguelfnunes.challenge.controller.CustomerController  - Delete customer
+INFO    2022-11-10 15:43:20,634 [http-nio-8080-exec-3] com.miguelfnunes.challenge.controller.CustomerController  - Delete customer
+DEBUG   2022-11-10 15:43:20,894 [http-nio-8080-exec-3] com.miguelfnunes.challenge.service.CustomerServiceImpl  - Invalid ID
